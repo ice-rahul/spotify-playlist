@@ -1,4 +1,4 @@
-type Data = {
+interface Data {
   collaborative: boolean,
   description: string,
   external_urls: {
@@ -33,7 +33,7 @@ type Data = {
   uri: string
 }
 
-type List = {
+interface List {
   message: string,
   playlists: {
     href: string,

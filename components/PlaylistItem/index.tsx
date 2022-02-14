@@ -5,7 +5,7 @@ interface PlayListItemProps {
   item: Data,
 }
 
-function PlayListItem({ item }: PlayListItemProps) {
+const PlayListItem: React.FC<PlayListItemProps> = ({ item }) => {
   const { id, images, name, description } = item;
 
   return (

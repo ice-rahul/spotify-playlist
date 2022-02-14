@@ -7,7 +7,7 @@ import { DragDropContext, Droppable, Draggable, DropResult, resetServerContext }
 import { useSelector, useDispatch } from 'react-redux';
 import * as t from '../redux/types';
 
-const Home = ({ data }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const Home: React.FC<InferGetServerSidePropsType<typeof getServerSideProps>> = ({ data }) => {
 
   const myPlayList: Data[] = useMemo(() => [], []);
   const dispatch = useDispatch();
