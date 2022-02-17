@@ -1,12 +1,7 @@
 import React from 'react'
-import { Data } from '../../types/Playlist'
+import { PlayListsProps } from '../../types/Playlist'
 import PlayListItem from '../PlaylistItem'
 import { Droppable, Draggable } from 'react-beautiful-dnd';
-
-interface PlayListsProps {
-  label: string,
-  list: Data[],
-}
 
 const PlayLists: React.FC<PlayListsProps> = ({ label = 'Playlist', list = [] }) => {
 
@@ -20,14 +15,14 @@ const PlayLists: React.FC<PlayListsProps> = ({ label = 'Playlist', list = [] }) 
               list.map((item, index) => (
                 <Draggable key={item.id} draggableId={item.id} index={index}>
                   {(provided) => (
-                      <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                        <PlayListItem item={item} />
-                      </li>
+                    <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                      <PlayListItem item={item} />
+                    </li>
                   )}
                 </Draggable>
               ))
             }
-            { provided.placeholder }
+            {provided.placeholder}
           </ul>
         )}
       </Droppable>

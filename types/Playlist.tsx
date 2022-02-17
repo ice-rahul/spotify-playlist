@@ -1,3 +1,5 @@
+import { AnyAction, EmptyObject, Store } from "redux";
+
 interface Data {
   collaborative: boolean,
   description: string,
@@ -46,4 +48,21 @@ interface List {
   }
 }
 
-export type { Data, List }
+interface StateProps {
+  [x: string]: Data[]
+}
+
+interface StoreType extends Store<EmptyObject & { playlist: StateProps; }, AnyAction> {
+  __PERSISTOR: any;
+}
+
+interface PlayListsProps {
+  label: string,
+  list: Data[],
+}
+
+interface PlayListItemProps {
+  item: Data,
+}
+
+export type { Data, List, StateProps, StoreType, PlayListsProps, PlayListItemProps }

@@ -1,30 +1,9 @@
 import * as t from '../types';
-import { Data } from '../../types/Playlist';
+import { StateProps } from '../../types/Playlist';
 
 const getPlaylist = (playListId: string | undefined) => {
   const playListName = playListId?.split('-').splice(1)
   return playListName?.join('')
-}
-
-interface ActionProps {
-  type: string,
-  payload: {
-    destination?: {
-      droppableId: string,
-      index: number
-    },
-    source?: {
-      droppableId: string,
-      index: number
-    },
-    draggableId: string,
-    playLists?: Data[]
-  },
-  name?: string
-}
-
-export interface StateProps {
-  [x: string]: Data[]
 }
 
 const main = (state: StateProps = {}, action: any) => {

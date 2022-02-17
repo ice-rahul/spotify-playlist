@@ -3,7 +3,7 @@ import React, { useEffect, useMemo } from 'react';
 import Layout from '../components/Layout';
 import PlayLists from '../components/Playlists';
 import { Data } from '../types/Playlist';
-import { DragDropContext, Droppable, Draggable, DropResult, resetServerContext } from 'react-beautiful-dnd';
+import { DragDropContext, DropResult, resetServerContext } from 'react-beautiful-dnd';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/reducers/rootReducer';
 import * as t from '../redux/types';

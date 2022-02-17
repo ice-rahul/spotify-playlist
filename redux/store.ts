@@ -1,11 +1,7 @@
-import { AnyAction, createStore, EmptyObject, Store } from "redux";
+import { createStore } from "redux";
 import rootReducer from "./reducers/rootReducer";
 import { persistStore } from 'redux-persist';
-import { StateProps } from './reducers/main';
-
-interface StoreType extends Store<EmptyObject & { playlist: StateProps; }, AnyAction>{
-  __PERSISTOR: any;
-}
+import { StoreType } from '../types/Playlist';
 
 let store: StoreType;
 const isClient = typeof window !== 'undefined';

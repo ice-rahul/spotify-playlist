@@ -1,9 +1,5 @@
 import React from 'react'
-import { Data } from '../../types/Playlist'
-
-interface PlayListItemProps {
-  item: Data,
-}
+import { PlayListItemProps } from '../../types/Playlist'
 
 const PlayListItem: React.FC<PlayListItemProps> = ({ item }) => {
   const { id, images, name, description } = item;
