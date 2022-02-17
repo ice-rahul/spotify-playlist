@@ -23,7 +23,7 @@ interface ActionProps {
   name?: string
 }
 
-interface StateProps {
+export interface StateProps {
   [x: string]: Data[]
 }
 

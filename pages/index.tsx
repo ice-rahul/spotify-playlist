@@ -5,17 +5,19 @@ import PlayLists from '../components/Playlists';
 import { Data } from '../types/Playlist';
 import { DragDropContext, Droppable, Draggable, DropResult, resetServerContext } from 'react-beautiful-dnd';
 import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../redux/reducers/rootReducer';
 import * as t from '../redux/types';
 
 const Home: React.FC<InferGetServerSidePropsType<typeof getServerSideProps>> = ({ data }) => {
-
-  const myPlayList: Data[] = useMemo(() => [], []);
   const dispatch = useDispatch();
-  
+  const myPlayList: Data[] = useSelector((state: RootState) => state.playlist.MyPlaylist);
+  const myPlayListIds = myPlayList && myPlayList.map((val) => val.id);
+  const playlist = myPlayListIds ? data.filter((val) => !myPlayListIds.includes(val.id)) : []
+
   useEffect(() => {
-    dispatch({type: t.INITIALIZE_PLAYLIST, name: 'Playlist', payload: { playLists: data}})
+    dispatch({type: t.INITIALIZE_PLAYLIST, name: 'Playlist', payload: { playLists: playlist}})
     dispatch({type: t.INITIALIZE_PLAYLIST, name: 'MyPlaylist', payload: { playLists: myPlayList }})
-  }, [data, dispatch, myPlayList])
+  }, [data, dispatch, myPlayList, playlist])
 
   const handleOnDragEnd = (result: DropResult) => {
     dispatch({type: t.MOVE_PLAYLIST, payload: result})
@@ -26,7 +28,7 @@ const Home: React.FC<InferGetServerSidePropsType<typeof getServerSideProps>> = (
       <DragDropContext onDragEnd={(result, provided) => {
         handleOnDragEnd(result)
       }}>
-        <PlayLists label="Playlist" list={data} />
+        <PlayLists label="Playlist" list={playlist} />
         <PlayLists label="My Playlist" list={myPlayList} />
       </DragDropContext>
     </Layout>
