@@ -12,7 +12,7 @@ const Home: React.FC<InferGetServerSidePropsType<typeof getServerSideProps>> = (
   const dispatch = useDispatch();
   const myPlayList: Data[] = useSelector((state: RootState) => state.playlist.MyPlaylist);
   const myPlayListIds = myPlayList && myPlayList.map((val) => val.id);
-  const playlist = useMemo(() => data.filter((val) => !myPlayListIds.includes(val.id)), [data, myPlayListIds])
+  const playlist = useMemo(() => (myPlayListIds && data.filter((val) => !myPlayListIds.includes(val.id))) || [], [data, myPlayListIds])
 
   useEffect(() => {
     dispatch({ type: t.INITIALIZE_PLAYLIST, name: 'Playlist', payload: { playLists: playlist } })
