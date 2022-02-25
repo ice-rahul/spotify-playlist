@@ -8,6 +8,16 @@ A short project to create a personal playlist from spotify featured playlists
 - React Beautiful DnD
 - Redux
 
+## Steps to run the application
+- Clone the repository
+- Rename the file `.env_sample` to `.env`
+- Replace your credentials as mentioned in the sample file
+- run `npm install`
+- run `npm run dev`
+- you project will ideally be live at `http://localhost:3000`
+- you will also get a log in your console stating the same
+
+## [Click here to see live demo of the project](https://spotify-playlist-ice-rahul.vercel.app)
 
 ## ScreenShot
 
